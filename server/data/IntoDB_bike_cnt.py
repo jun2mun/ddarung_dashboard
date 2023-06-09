@@ -1,6 +1,7 @@
 import json
 import pymysql
 import os
+import db_config
 
 def filename_search(dirname):
     filenames = os.listdir(dirname)
@@ -16,7 +17,7 @@ def fullname_search(dirname):
             full_filename = os.path.join(dirname, filename)
             return full_filename
 
-conn = pymysql.connect(host='211.215.17.215', user='react',passwd='dlwnsqja13@$',db='react',charset='utf8')
+conn = pymysql.connect(host=db_config.data['host'], user=db_config.data['user'],passwd=db_config.data['passwd'],db=db_config.data['db'],charset='utf8')
 full_filename = fullname_search('/root/')
 file_time = filename_search('/root/')[:-5]
 print(full_filename)
@@ -44,7 +45,7 @@ with conn.cursor() as curs:
 print(curs.rowcount, "개의 레코드가 입력되었습니다.")
 conn.close()
 
-conn = pymysql.connect(host='211.215.17.215', user='react',passwd='dlwnsqja13@$',db='react',charset='utf8')
+conn = pymysql.connect(host=db_config.data['host'], user=db_config.data['user'],passwd=db_config.data['passwd'],db=db_config.data['db'],charset='utf8')
 with conn.cursor() as curs:
     with open(full_filename,encoding="UTF-8") as file:
         json_data =json.load(file)
