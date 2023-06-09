@@ -1,7 +1,8 @@
 import json
 import pymysql
+import db_config
 
-conn = pymysql.connect(host='211.215.17.215', user='react',passwd='dlwnsqja13@$',db='react',charset='utf8')
+conn = pymysql.connect(host=db_config.data['host'], user=db_config.data['user'],passwd=db_config.data['passwd'],db=db_config.data['db'],charset='utf8')
 table = "station"
 with conn.cursor() as curs:
     with open("C:\\Users\\leejunbeom\\Desktop\\react\\react_app3\\server\\data\\preprocess\\20210404012814.json",encoding="UTF-8") as file:
