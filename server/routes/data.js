@@ -1,10 +1,9 @@
 
 const express = require('express');
 var router = express.Router();
-const db_config = require('../config/database.js');
-const conn = db_config.init();
+const db_config = require('../../config/database.js');
+const connection = db_config;
 
-connection = db_config.init();
 //route = '/station_id_4'
 
 router.get('/', function(req, res){

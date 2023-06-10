@@ -1,10 +1,9 @@
 
 const express = require('express');
 var router = express.Router();
-const db_config = require('../config/database.js');
-const conn = db_config.init();
+const db_config = require('../../config/database.js');;
 
-connection = db_config.init();
+connection = db_config;
 
 router.get('/', function(req, res){
     var sql = 'SELECT * FROM station';

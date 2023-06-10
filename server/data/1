@@ -9,6 +9,7 @@ def filename_search(dirname):
     for filename in filenames:
         if filename.endswith(".json"):
             #full_filename = os.path.join(dirname, filename)
+            print(filename)
             return filename
 
 def fullname_search(dirname):
@@ -16,7 +17,7 @@ def fullname_search(dirname):
     filenames = os.listdir(os.path.dirname(os.path.realpath(__file__)))
     for filename in filenames:
         if filename.endswith(".json"):
-            full_filename = f'{os.path.dirname(os.path.realpath(__file__))}' + '/' + f'{filename}'
+            full_filename = filesnames + '/' + filename
             return full_filename
 
 conn = pymysql.connect(host=db_config.data['host'], user=db_config.data['user'],passwd=db_config.data['passwd'],db=db_config.data['db'],charset='utf8')
@@ -46,7 +47,6 @@ with conn.cursor() as curs:
                 conn.commit()   
 print(curs.rowcount, "개의 레코드가 입력되었습니다.")
 conn.close()
-
 
 conn = pymysql.connect(host=db_config.data['host'], user=db_config.data['user'],passwd=db_config.data['passwd'],db=db_config.data['db'],charset='utf8')
 with conn.cursor() as curs:

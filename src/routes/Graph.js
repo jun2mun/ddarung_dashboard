@@ -43,7 +43,7 @@ class Graph extends React.Component{
 }
 
   getDB_name = async () => {
-    await axios.get('/Graph')
+    await axios.get('http://localhost/Graph:3001')
       .then((response) => {
         const result = response['data'];
         const label_result =[];
@@ -61,7 +61,7 @@ class Graph extends React.Component{
   };
 
   getDB_data = async () => {
-    await axios.get('/Data')
+    await axios.get('http://localhost/Data:3001')
       .then((response) => {
         const result = response['data'];
         const parkingBikeTotCnt_result =[];
@@ -86,7 +86,7 @@ class Graph extends React.Component{
   };
 
   getDB_Time = async () => {
-    await axios.get('/Data')
+    await axios.get('http://localhost/Data:3001')
       .then((response) => {
         const result = response['data'];
         const Time_result =[];
@@ -108,7 +108,7 @@ class Graph extends React.Component{
   };
 
   Search_result(searchValue, cb){
-    axios.get('/Graph')
+    axios.get('http://localhost/Graph:3001')
         .then((response) => {
         const result = response['data'];
         const label_result =[];
