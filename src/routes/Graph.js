@@ -7,7 +7,25 @@ import {Line} from 'react-chartjs-2'
 //import Search from 'react-search'
 import Search from '../components/Search'
 //import "./Graph.css";
-
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 class Graph extends React.Component{
   constructor(props){
@@ -43,7 +61,7 @@ class Graph extends React.Component{
 }
 
   getDB_name = async () => {
-    await axios.get('http://localhost/Graph:3001')
+    await axios.get('/Graph')
       .then((response) => {
         const result = response['data'];
         const label_result =[];
@@ -61,7 +79,7 @@ class Graph extends React.Component{
   };
 
   getDB_data = async () => {
-    await axios.get('http://localhost/Data:3001')
+    await axios.get('/Data')
       .then((response) => {
         const result = response['data'];
         const parkingBikeTotCnt_result =[];
@@ -86,7 +104,7 @@ class Graph extends React.Component{
   };
 
   getDB_Time = async () => {
-    await axios.get('http://localhost/Data:3001')
+    await axios.get('/Data')
       .then((response) => {
         const result = response['data'];
         const Time_result =[];
@@ -108,7 +126,7 @@ class Graph extends React.Component{
   };
 
   Search_result(searchValue, cb){
-    axios.get('http://localhost/Graph:3001')
+    axios.get('/Graph')
         .then((response) => {
         const result = response['data'];
         const label_result =[];
